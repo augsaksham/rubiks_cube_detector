@@ -47,7 +47,7 @@ dict_colours={
 }
 for file in glob.glob(path):
     image=cv.imread(file)
-    cv.imshow("Input",cv.resize(image,(480,480)))
+    #cv.imshow("Input",cv.resize(image,(480,480)))
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     thresh = cv.threshold(gray, 50, 255, cv.THRESH_BINARY_INV)[1]
     # cv.imshow("Threshold",thresh)
@@ -82,7 +82,7 @@ for file in glob.glob(path):
     warped[:,warped.shape[0]-9:,:]=0
     warped[0:8,:,:]=0
     warped[warped.shape[1]-8:,:,:]=0
-    cv.imshow("Warped Img small",warped)
+    #cv.imshow("Warped Img small",warped)
     #print("Rotation = ",rect[2])
     if rect[2]>=45:
         M = cv.getRotationMatrix2D((240, 240), -90, 1.0)
@@ -106,7 +106,7 @@ for file in glob.glob(path):
     ref_image=cv.putText(ref_image,"7",(80-20,400-20),font,1.5,(0,255,0))
     ref_image=cv.putText(ref_image,"8",(240-20,400-20),font,1.5,(0,255,0))
     ref_image=cv.putText(ref_image,"9",(400-20,400-20),font,1.5,(0,255,0))
-    cv.imshow("Reference Image",ref_image)
+    #cv.imshow("Reference Image",ref_image)
     ################################################################
     dict_results={}
     final_img=rotated.copy()
@@ -175,7 +175,7 @@ for file in glob.glob(path):
                 f.write('\n') 
             f.write('%s:%s  ' % (key, dict_results[key]))
             cnt+=1
-    cv.imshow("Final Image",final_img)
-    cv.waitKey()
+    #cv.imshow("Final Image",final_img)
+    #cv.waitKey()
 # im=cv.imread("test/cube_rand.jpg")
 # color_picker(im)
