@@ -3,7 +3,7 @@ import numpy as np
 import glob
 
 from numpy.lib.type_check import imag
-path = "inputs\*.*"
+path = "input\*.*"
 def color_picker(image):
     def empty(a):
         pass
@@ -166,7 +166,7 @@ for file in glob.glob(path):
                         dict_results['9']=clr 
                 cntrRect.append(approx)
         #print("Intermediate dictionery ",dict_results)
-    s='Output'+file[6:file.index('.')]+'.txt'
+    s='Output'+file[5:file.index('.')]+'.txt'
     cnt=0
     lst=[]
     tm_lst=[]
