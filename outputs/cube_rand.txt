@@ -1,4 +1,0 @@
-
-1:red  2:green  3:white  
-4:white  5:yellow  6:red  
-7:red  8:yellow  9:blue  

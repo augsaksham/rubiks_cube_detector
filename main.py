@@ -38,12 +38,12 @@ def color_picker(image):
                 break
     cv.destroyAllWindows()
 dict_colours={
-    'red':[[0,55,0],[10,255,255]],
-    'green':[[43,60,47],[103,255,255]],
-    'blue':[[82,51,0],[170,255,255]],
-    'orange':[[8,58,0],[17,255,255]],
-    'yellow':[[17,80,0],[60,255,255]],
-    'white':[[13,0,63],[56,22,221]]
+    3:[[0,55,0],[10,255,255]],#red
+    2:[[43,60,47],[103,255,255]],#green
+    1:[[82,51,0],[170,255,255]],#blue
+    4:[[8,58,0],[17,255,255]],#orange
+    5:[[17,80,0],[60,255,255]],#yellow
+    6:[[13,0,63],[56,22,221]]#white
 }
 for file in glob.glob(path):
     image=cv.imread(file)
@@ -166,15 +166,21 @@ for file in glob.glob(path):
                         dict_results['9']=clr 
                 cntrRect.append(approx)
         #print("Intermediate dictionery ",dict_results)
-    s='outputs'+file[6:file.index('.')]+'.txt'
+    s='Output'+file[6:file.index('.')]+'.txt'
     cnt=0
+    lst=[]
+    tm_lst=[]
     print("Result ",dict_results)
-    with open(s, 'w') as f: 
-        for key in sorted(dict_results):
-            if cnt%3==0:
-                f.write('\n') 
-            f.write('%s:%s  ' % (key, dict_results[key]))
-            cnt+=1
+    cnt=0
+    for key in sorted(dict_results):
+        cnt+=1
+        tm_lst.append(dict_results[key])
+        if cnt%3==0:
+            lst.append(tm_lst)
+            tm_lst=[]
+    textfile = open(s, "w")
+    textfile.write(str(np.array(lst)))
+    textfile.close()
     #cv.imshow("Final Image",final_img)
     #cv.waitKey()
 # im=cv.imread("test/cube_rand.jpg")
